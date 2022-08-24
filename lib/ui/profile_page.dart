@@ -46,46 +46,42 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
-    // return BlocBuilder<GetProfileCubit, GetProfileState>(
-    //     builder: (context, state) {
-    //   if (state is GetProfileSuccess) {
     return Scaffold(
         backgroundColor: Colors.white,
         body: _profileBloc.getProfileStream().streamWidget(
             successWidget: (ResponseModel responseModel) {
-              ProfileModels profileModels = responseModel.data;
-              return Form(
-                key: _formKey,
-                child: SizedBox(
-                  width: width,
-                  child: Column(
+          ProfileModels profileModels = responseModel.data;
+          return Form(
+            key: _formKey,
+            child: SizedBox(
+              width: width,
+              child: Column(
+                children: [
+                  //Name Phone Number Status
+                  Column(
                     children: [
-                      //Name Phone Number Status
-                      Column(
-                        children: [
-                          const SizedBox(height: 30),
-                          Text(
-                            // state.profile.name!,
-                            profileModels.name!,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20,
-                              color: Color(0xA6000000),
-                            ),
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            // state.profile.phone!,
-                            profileModels.phone!,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w400,
-                              color: Color(0xA6000000),
-                            ),
-                          ),
-                          const SizedBox(height: 15),
-                          _bloc.changeStatusStream().streamLoadingWidget(
+                      const SizedBox(height: 30),
+                      Text(
+                        // state.profile.name!,
+                        profileModels.name!,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                          color: Color(0xA6000000),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        // state.profile.phone!,
+                        profileModels.phone!,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xA6000000),
+                        ),
+                      ),
+                      const SizedBox(height: 15),
+                      _bloc.changeStatusStream().streamLoadingWidget(
                             childWidget: Container(
                               width: 90,
                               height: 40,
@@ -122,121 +118,115 @@ class _ProfilePageState extends State<ProfilePage> {
                                     items: <String>['Online', 'Offline']
                                         .map<DropdownMenuItem<String>>(
                                             (String value) {
-                                          return DropdownMenuItem<String>(
-                                            value: value,
-                                            child: Text(value),
-                                          );
-                                        }).toList(),
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    }).toList(),
                                   )
                                 ],
                               ),
                             ),
                           ),
-                          const SizedBox(height: 30),
-                        ],
-                      ),
+                      const SizedBox(height: 30),
+                    ],
+                  ),
 
-                      // P R O F I L E
-                      Column(
-                        children: [
-                          const TitleTextAccountPage(titleText: 'PROFILE'),
-                          EachSettingListTile(
-                            iconData: Icons.account_circle_outlined,
-                            titleText: 'Update Profile',
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) {
-                                  return const UpdateProfilePage();
-                                }),
-                              ).then((value) => _profileBloc.getProfileData());
-                            },
-                          ),
-                          EachSettingListTile(
-                            iconData: Icons.key,
-                            titleText: 'Change Password',
-                            onTap: () {},
-                          ),
-                        ],
-                      ),
-
-                      //G E N E R A L
-                      Column(
-                        children: [
-                          const TitleTextAccountPage(titleText: 'GENERAL'),
-                          EachSettingListTile(
-                            iconData: Icons.language,
-                            titleText: 'Language',
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(builder: (context) {
-                                  return const ChangeLanguage();
-                                }),
-                              ).then((value) {
-                                setState(() {});
-                              });
-                            },
-                          ),
-                          EachSettingListTile(
-                            iconData: Icons.headset_mic,
-                            titleText: 'Help Center',
-                            onTap: () {},
-                          ),
-                          EachSettingListTile(
-                            iconData: Icons.list_alt,
-                            titleText: 'Terms & Conditions',
-                            onTap: () {},
-                          )
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 90,
-                      ),
-                      InkWell(
+                  // P R O F I L E
+                  Column(
+                    children: [
+                      const TitleTextAccountPage(titleText: 'PROFILE'),
+                      EachSettingListTile(
+                        iconData: Icons.account_circle_outlined,
+                        titleText: 'Update Profile',
                         onTap: () {
-                          Navigator.of(context).pop();
-
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => LogoutScreen()));
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) {
+                              return const UpdateProfilePage();
+                            }),
+                          ).then((value) => _profileBloc.getProfileData());
                         },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          // crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              tr("Log Out"),
-                              maxLines: 1,
-                              style: TextStyle(
-                                  fontSize:
-                                  context.locale == const Locale("my", "MM")
-                                      ? 16
-                                      : 20,
-                                  color: const Color(0xfff55f01)),
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            const Icon(
-                              Icons.logout,
-                              color: Color(0xFFF55F01),
-                            ),
-                          ],
-                        ),
+                      ),
+                      EachSettingListTile(
+                        iconData: Icons.key,
+                        titleText: 'Change Password',
+                        onTap: () {},
                       ),
                     ],
                   ),
-                ),
-              );
-            }, tryAgain: () {
+
+                  //G E N E R A L
+                  Column(
+                    children: [
+                      const TitleTextAccountPage(titleText: 'GENERAL'),
+                      EachSettingListTile(
+                        iconData: Icons.language,
+                        titleText: 'Language',
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) {
+                              return const ChangeLanguage();
+                            }),
+                          ).then((value) {
+                            setState(() {});
+                          });
+                        },
+                      ),
+                      EachSettingListTile(
+                        iconData: Icons.headset_mic,
+                        titleText: 'Help Center',
+                        onTap: () {},
+                      ),
+                      EachSettingListTile(
+                        iconData: Icons.list_alt,
+                        titleText: 'Terms & Conditions',
+                        onTap: () {},
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 90,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.of(context).pop();
+
+                      // Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (context) => LogoutScreen()));
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          tr("Log Out"),
+                          maxLines: 1,
+                          style: TextStyle(
+                              fontSize:
+                                  context.locale == const Locale("my", "MM")
+                                      ? 16
+                                      : 20,
+                              color: const Color(0xfff55f01)),
+                        ),
+                        const SizedBox(
+                          width: 20,
+                        ),
+                        const Icon(
+                          Icons.logout,
+                          color: Color(0xFFF55F01),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }, tryAgain: () {
           _profileBloc.getProfileData();
         }));
-    //   } else if (state is GetProfileFail) {
-    //     return const Text("Error");
-    //   } else {
-    //     return const Center(child: Text("Loading Data"));
-    //   }
-    // });
   }
 
   @override

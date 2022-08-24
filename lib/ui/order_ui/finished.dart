@@ -1,3 +1,4 @@
+import 'package:apitestinglogin/ui/delivery_item_detail/delivery_item_detail.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/orderListModel/new_order_model.dart';
@@ -51,13 +52,20 @@ class Finished extends StatelessWidget {
                     Text("${model.orderTotalAmount} item(s)"),
                     Row(
                       children: [
-
                         Spacer(),
                         ElevatedButton(
                             style: ElevatedButton.styleFrom(
                               primary: Color(0xFFF55F01),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context) {
+                                  return DeliveryItemDetail(
+                                    orderId: model.orderId!,
+                                  );
+                                }),
+                              );
+                            },
                             child: Text('View Detail')),
                       ],
                     ),
