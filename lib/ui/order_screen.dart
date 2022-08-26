@@ -2,7 +2,6 @@ import 'package:apitestinglogin/ui/earning_page.dart';
 import 'package:apitestinglogin/ui/history_page.dart';
 import 'package:apitestinglogin/ui/profile_page.dart';
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 import 'delivery_page.dart';
 
@@ -21,49 +20,54 @@ class _OrderScreenState extends State<OrderScreen> {
     const EarningPage(),
     const ProfilePage(),
   ];
+
+  Color selectedColor = const Color(0xFFFFFFFF);
+  Color unSelectedColor = const Color(0xA6FFFFFF);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-
-        items: [
-          BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.delivery_dining,
-              ),
-              label: tr('Delivery')),
-          BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.history,
-              ),
-              label: tr('History')),
-          BottomNavigationBarItem(
-              icon: const Icon(
-                Icons.account_balance,
-              ),
-              label: tr('Earning')),
-          BottomNavigationBarItem(
-
-              icon: const Icon(
-                Icons.account_circle_outlined,
-              ),
-              label: tr('Profile')),
-
-        ],
-        selectedItemColor: const Color(0xFFF55F01),
-        unselectedItemColor: const Color(0xFFF55F01),
-        showUnselectedLabels: true,
-        selectedFontSize: 13,
-        unselectedFontSize: 13,
-        onTap: (value) {
-          setState(() {
-            pageIndex = value;
-          });
-        },
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: const Color(0xFFF55F01),
+        ),
+        child: BottomNavigationBar(
+          currentIndex: pageIndex,
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.delivery_dining,
+                ),
+                label: 'Delivery'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.history,
+                ),
+                label: 'History'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_balance,
+                ),
+                label: 'Earning'),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_circle_outlined,
+                ),
+                label: 'Profile'),
+          ],
+          selectedItemColor: const Color(0xFFFFFFFF),
+          unselectedItemColor: const Color(0xA6FFFFFF),
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          onTap: (value) {
+            setState(() {
+              pageIndex = value;
+            });
+          },
+        ),
       ),
       appBar: AppBar(
         iconTheme:
-            const IconThemeData(color: Color.fromARGB(255, 219, 212, 212)),
+        const IconThemeData(color: Color.fromARGB(255, 219, 212, 212)),
         backgroundColor: const Color(0xFFF55F01),
         title: Text(
           textTileChange(pageIndex),
@@ -81,7 +85,6 @@ class _OrderScreenState extends State<OrderScreen> {
       ),
       extendBody: true,
       body: pageLists[pageIndex],
-
     );
   }
 

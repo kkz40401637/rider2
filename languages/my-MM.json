@@ -25,5 +25,19 @@
   "WITHDRAW": "ထုတ်ယူသည်",
   "UPCOMING": "အသစ်များ",
   "IN PROGRESS": "လုပ်ဆောင်နေဆဲ",
-  "FINISHED": "ပြီးဆုံးသည်"
+  "FINISHED": "ပြီးဆုံးသည်",
+  "Name": "အမည်",
+  "Phone": "ဖုန်း",
+  "Email": "အီးမေးလ်",
+  "Adress": "နေရပ်လိပ်စာ",
+  "Delivery Detail": "ပို့ဆောင်မှုအခြေနေ",
+  "CUSTOMER": "စားသုံးသူ",
+  "RESTAURANT": "စားသောက်ဆိုင်",
+  "ORDER SUMMARY": "အမှာများ",
+  "Subtotal": "သင့်ငွေ",
+  "Tax": "အခွန်",
+  "Delivery Fee": "ပို့ဆောင်ခ",
+  "Total": "စုစုပေါင်း",
+  "Save": "သိမ်းသည်",
+  "Accept": "လက်ခံသည်"
 }

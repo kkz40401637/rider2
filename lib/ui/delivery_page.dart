@@ -30,7 +30,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
     BlocProvider.of<OrderCubit>(context).orderListRequest(
         riderId!,
         DateFormat('yyyy-MM-dd')
-            .parse(DateTime.now().subtract(Duration(days: 3)).toString())
+            .parse(DateTime.now().subtract(const Duration(days: 6)).toString())
             .toString()
             .split(' ')
             .first,
@@ -74,7 +74,7 @@ class _DeliveryPageState extends State<DeliveryPage> {
                     height: 50,
                     child: AppBar(
                       backgroundColor: const Color(0xFF5A5A5A),
-                      bottom:  TabBar(
+                      bottom: TabBar(
                         tabs: [
                           Tab(
                             text: tr('UPCOMING'),

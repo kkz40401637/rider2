@@ -17,6 +17,7 @@ class OrderCubit extends Cubit<OrderState> {
       String startDate,
       String endDate,
       )  {
+    emit(OrderLoading());
     NewOrderModel orderModel = NewOrderModel(
         riderId: riderId, startDate:startDate, endDate: endDate);
     print(orderModel.toJson());

@@ -25,5 +25,19 @@
   "WITHDRAW": "WITHDRAW",
   "UPCOMING": "UPCOMING",
   "IN PROGRESS": "IN PROGRESS",
-  "FINISHED": "FINISHED"
+  "FINISHED": "FINISHED",
+  "Name": "Name",
+  "Phone": "Phone",
+  "Email": "Email",
+  "Adress": "Adress",
+  "CUSTOMER": "CUSTOMER",
+  "RESTAURANT": "RESTAURANT",
+  "Delivery Detail": "Delivery Detail",
+  "ORDER SUMMARY": "ORDER SUMMARY",
+  "Subtotal": "Subtotal",
+  "Tax": "Tax",
+  "Delivery Fee": "Delivery Fee",
+  "Total": "Total",
+  "Save": "Save",
+  "Accept": "Accept"
 }

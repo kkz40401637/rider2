@@ -238,9 +238,9 @@ class DeliveryItemDetail extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        "Subtotal",
-                        style: TextStyle(
+                      Text(
+                        tr("Subtotal"),
+                        style: const TextStyle(
                           color: Color(0x80000000),
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -260,9 +260,9 @@ class DeliveryItemDetail extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        "Tax",
-                        style: TextStyle(
+                      Text(
+                        tr("Tax"),
+                        style: const TextStyle(
                           color: Color(0x80000000),
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -282,9 +282,9 @@ class DeliveryItemDetail extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        "Delivery Fee",
-                        style: TextStyle(
+                      Text(
+                        tr("Delivery Fee"),
+                        style: const TextStyle(
                           color: Color(0x80000000),
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -304,9 +304,9 @@ class DeliveryItemDetail extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        "Total",
-                        style: TextStyle(
+                      Text(
+                        tr("Total"),
+                        style: const TextStyle(
                           color: Color(0x80000000),
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
@@ -340,7 +340,7 @@ class DeliveryItemDetail extends StatelessWidget {
           onPressed: () {
             Navigator.of(context).pop();
           },
-          child: const Text("Accept"),
+          child: Text(tr("Accept")),
         ),
       ),
     );

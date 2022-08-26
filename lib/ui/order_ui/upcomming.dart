@@ -69,7 +69,15 @@ class Upcomming extends StatelessWidget {
                             onTap: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => MapScreen(),
+                                  builder: (context) => MapScreen(
+                                    orderList,
+                                    updateStatus: (orderId, changeStatus) {
+                                      Navigator.of(context).pop();
+                                      updateStatus(orderId, changeStatus);
+
+                                    },
+                                    orderId: model.orderId!,
+                                  ),
                                 ),
                               );
                             },

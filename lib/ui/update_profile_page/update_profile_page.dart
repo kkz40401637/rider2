@@ -1,8 +1,10 @@
 import 'package:apitestinglogin/services/bloc/update_profile/update_profile_bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:apitestinglogin/utils/stream_ext.dart';
 import '../../models/response_model.dart';
 import '../../utils/app_utills.dart';
+import '../widgets/my_textfield.dart';
 
 class UpdateProfilePage extends StatefulWidget {
   const UpdateProfilePage({Key? key}) : super(key: key);
@@ -47,11 +49,11 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
     return Scaffold(
       appBar: AppBar(
         iconTheme:
-        const IconThemeData(color: Color.fromARGB(255, 219, 212, 212)),
+            const IconThemeData(color: Color.fromARGB(255, 219, 212, 212)),
         backgroundColor: const Color(0xFFF55F01),
-        title: const Text(
-          "Update Profile",
-          style: TextStyle(
+        title: Text(
+          tr("Update Profile"),
+          style: const TextStyle(
             color: Colors.white,
           ),
         ),
@@ -99,18 +101,18 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
         ),
       ),
       bottomNavigationBar: _bloc.updProfileStream().streamLoadingWidget(
-        childWidget: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-          child: ElevatedButton(
-            style: ButtonStyle(
-              backgroundColor:
-              MaterialStateProperty.all(const Color(0xFFF55F01)),
+            childWidget: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(const Color(0xFFF55F01)),
+                ),
+                onPressed: doUpdate,
+                child: Text(tr("Save")),
+              ),
             ),
-            onPressed: doUpdate,
-            child: const Text("Save"),
           ),
-        ),
-      ),
     );
   }
 
@@ -133,51 +135,5 @@ extension UpdPf on _UpdateProfilePageState {
     map['phone'] = _phoneTec.text;
     map['email'] = _emailTec.text;
     _bloc.doUpdate(map);
-  }
-}
-
-class Tfwidget extends StatelessWidget {
-  const Tfwidget(
-      {Key? key,
-        required this.controller,
-        required this.label,
-        required this.isPsw})
-      : super(key: key);
-
-  final TextEditingController controller;
-  final String label;
-  final bool isPsw;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: TextFormField(
-        controller: controller,
-        validator: ((value) {
-          if (isPsw) {
-            if (value!.isEmpty) {
-              return 'Need To Fill';
-            } else if (value.length < 6) {
-              return "at lease 6 charater";
-            } else {
-              return null;
-            }
-          } else {
-            if (value!.isEmpty) {
-              return 'Need To Fill';
-            } else {
-              return null;
-            }
-          }
-        }),
-        decoration: InputDecoration(
-          label: Text(label),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ),
-      ),
-    );
   }
 }
